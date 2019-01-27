@@ -1,2 +1,3 @@
 robobrowser
 python-dotenv
+html_sanitizer
