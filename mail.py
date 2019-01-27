@@ -34,10 +34,10 @@ def search_mail(browser):
     tables = browser.find_all('table')
     mails = []
     for table in tables:
-        parent = table.parent
+        parent = browser.find_all('table')[0].parent
         id = parent.find_all('a')[1]['href'][1:]
         mail = browser.find("div", {"id": id})
-        if not table.find("tr", {"class": "read checke"}):
+        if not table.find("tr", {"class": "read checked"}):
             row = table.find_all('tr')[0]
             row = row.find_all('td')
             subject = ""
@@ -55,7 +55,9 @@ def search_mail(browser):
                     # print("on", end="")
             # print()
             print(subject)
-            # mails.append((subject, mail))
+            print(mail)
+            mails.append((subject, mail))
+
     return mails
 
 
